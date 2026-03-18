@@ -1,0 +1,510 @@
+/* =============================================
+   CLAUDIO MUNTEAN — VIKING / NATURE THEME
+   Restructured with container + card-white
+   Reusable utility classes throughout
+   ============================================= */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d110e;
+  --surface:   #1b2218;
+  --surface2:  #212b1e;
+  --border:    #2e3d28;
+  --border2:   #3d5234;
+  --gold:      #c9a84c;
+  --gold2:     #e8c96a;
+  --moss:      #5a7a3a;
+  --moss2:     #7aab50;
+  --fog:       #8a9e82;
+  --text:      #d4d9c8;
+  --muted:     #6b7d60;
+  --white:     #f0ede0;
+  --radius:    8px;
+  --font-head: 'Cinzel', serif;
+  --font-body: 'Crimson Pro', serif;
+  --shadow:    0 4px 24px rgba(0, 0, 0, 0.45);
+  --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(58,90,38,0.13) 0%, transparent 60%);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.032;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* =============================================
+   REUSABLE UTILITY CLASSES
+   ============================================= */
+
+.text-center { text-align: center; }
+
+.img-circle { border-radius: 50%; }
+
+.list-inline {
+  list-style: none;
+  padding-left: 0;
+}
+.list-inline > li {
+  display: inline;
+  padding: 0 16px;
+}
+
+.btn-cta {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: 0.85rem 2.4rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius);
+  background: rgba(201,168,76,0.07);
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+.btn-cta:hover {
+  background: rgba(201,168,76,0.18);
+  box-shadow: 0 0 28px rgba(201,168,76,0.28);
+  color: var(--gold2);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   LAYOUT: CONTAINER
+   ============================================= */
+
+.container {
+  width: 760px;
+  margin: 100px auto 60px auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =============================================
+   CARD WHITE
+   ============================================= */
+
+.card-white {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 40px 44px;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.card-white:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+
+/* =============================================
+   NAV
+   ============================================= */
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5vw;
+  background: rgba(13,17,14,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-rune {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  color: var(--gold);
+  opacity: 0.55;
+  user-select: none;
+}
+
+nav ul > li > a {
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+nav ul > li > a:hover { color: var(--gold2); }
+
+/* =============================================
+   CARD 1 — INTRODUCTION / HERO
+   ============================================= */
+
+.hero-photo-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.6rem;
+}
+
+.hero-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 3px solid var(--border2);
+  filter: sepia(15%) contrast(1.05) brightness(0.92);
+  position: relative;
+  z-index: 2;
+}
+
+.rune-ring {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  opacity: 0.3;
+  animation: spinSlow 30s linear infinite;
+  z-index: 1;
+}
+
+.rune-ring--outer {
+  inset: -22px;
+  border-style: dashed;
+  opacity: 0.12;
+  animation-direction: reverse;
+  animation-duration: 50s;
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+.overline {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+h1 {
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.03em;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.tagline {
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--fog);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.rune-divider {
+  margin: 1rem 0 1.4rem;
+}
+
+.rune-divider span {
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+.saga-lead {
+  font-size: 1.05rem;
+  color: var(--fog);
+  margin-bottom: 0.8rem;
+  line-height: 1.7;
+}
+
+/* =============================================
+   SECTION TITLE
+   ============================================= */
+
+.rune-title {
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rune-title::before,
+.rune-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  opacity: 0.6;
+}
+
+.rune-title::before { background: linear-gradient(270deg, var(--border2), transparent); }
+.rune-title::after  { background: linear-gradient(90deg,  var(--border2), transparent); }
+
+.rune-title.centered { justify-content: center; }
+.rune-title.centered::before,
+.rune-title.centered::after { max-width: 140px; }
+
+/* =============================================
+   CHRONICLES (experience / education)
+   ============================================= */
+
+.chronicles {
+  display: flex;
+  flex-direction: column;
+}
+
+.chronicle {
+  padding: 1.4rem 1.4rem 1.4rem 2rem;
+  border-left: 2px solid var(--border2);
+  margin-bottom: 4px;
+  position: relative;
+  transition: border-color 0.25s;
+}
+
+.chronicle::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 1.6rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.55;
+  transition: opacity 0.25s;
+}
+
+.chronicle:hover               { border-color: var(--gold); }
+.chronicle:hover::before       { opacity: 1; }
+.chronicle--edu::before        { background: var(--moss2); }
+
+.chronicle-year {
+  font-family: var(--font-head);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+  opacity: 0.8;
+}
+
+.chronicle--edu .chronicle-year { color: var(--moss2); }
+
+.chronicle h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+  letter-spacing: 0.03em;
+}
+
+.chronicle-place {
+  display: block;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--moss2);
+  margin-bottom: 0.4rem;
+}
+
+.chronicle p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* =============================================
+   SKILLS
+   ============================================= */
+
+.forge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.forge-block {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.forge-block:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+}
+
+.forge-heading {
+  font-family: var(--font-head);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.3rem;
+}
+
+.forge-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.forge-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.rune-bullet {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  color: var(--gold);
+  opacity: 0.55;
+  min-width: 1.2rem;
+}
+
+.tongues {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.tongue {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.flag        { font-size: 1.15rem; }
+.tongue-name { flex: 1; font-size: 1rem; color: var(--text); }
+.tongue-level {
+  font-family: var(--font-head);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss2);
+  opacity: 0.8;
+}
+
+/* =============================================
+   CONTACT / FOOTER CARD
+   ============================================= */
+
+.summon-sub {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.contact-list {
+  margin-bottom: 2rem;
+}
+
+.contact-list > li {
+  padding: 0 12px;
+}
+
+.contact-link {
+  font-size: 0.95rem;
+  color: var(--fog);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a.contact-link:hover { color: var(--gold2); }
+
+.footer-runes {
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  opacity: 0.25;
+  margin-bottom: 0.8rem;
+  user-select: none;
+}
+
+.footer-credit {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 820px) {
+  .container {
+    width: 92%;
+    margin-top: 80px;
+  }
+
+  .card-white { padding: 28px 22px; }
+
+  .forge-grid { grid-template-columns: 1fr; }
+
+  h1 { font-size: 2.2rem; }
+
+  .contact-list > li {
+    display: block;
+    padding: 6px 0;
+  }
+}
