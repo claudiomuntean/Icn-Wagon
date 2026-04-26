@@ -1,0 +1,508 @@
+/* =====================
+   RESET
+   ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   BODY
+   font-family, color, font-size, line-height
+   background-color + background-image (Le Wagon step 1)
+   ===================== */
+body {
+  background-color: #0c1810;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 80px,
+    rgba(255, 255, 255, 0.015) 80px,
+    rgba(255, 255, 255, 0.015) 81px
+  );
+  font-family: 'Epilogue', sans-serif;
+  color: #f0ebe0;
+  font-size: 15.5px;
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* =====================
+   GROUPING h1, h2, h3
+   shared font rules (Le Wagon step 2)
+   ===================== */
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+/* Individual header sizes */
+h1 {
+  font-size: 72px;
+  line-height: 1.0;
+  color: #f0ebe0;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: #c9a84c;
+}
+
+h2 {
+  font-size: 28px;
+  color: #0c1810;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Epilogue', sans-serif;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #555;
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+/* =====================
+   LINKS
+   color, text-decoration, transition (Le Wagon step 3)
+   ===================== */
+a {
+  color: #c9a84c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #a6803a;
+  text-decoration: none;
+}
+
+/* =====================
+   HERO — id selector
+   ===================== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow behind hero content */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Diagonal gold line decoration */
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+}
+
+/* Descendant selector: label inside #hero */
+#hero .hero-label {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  font-weight: 500;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.1s;
+}
+
+/* Descendant selector: h1 inside #hero */
+#hero h1 {
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.25s;
+}
+
+/* Descendant selector: p inside #hero */
+#hero p.hero-bio {
+  max-width: 420px;
+  color: rgba(240, 235, 224, 0.65);
+  font-size: 16px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* Descendant selector: a.btn inside #hero */
+#hero .btn {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.55s;
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-right {
+  flex-shrink: 0;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(240, 235, 224, 0.3);
+  font-size: 14px;
+  animation: bounce 2s infinite;
+}
+
+/* =====================
+   PROFILE IMAGE
+   img-circle reusable class (Le Wagon id/class lesson)
+   ===================== */
+.img-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.img-profile {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center top;
+  position: relative;
+  z-index: 2;
+  border: 3px solid #c9a84c;
+}
+
+/* Decorative ring around image */
+.img-ring {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 304px;
+  height: 304px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  z-index: 1;
+  animation: spinSlow 20s linear infinite;
+}
+
+/* =====================
+   BUTTON — class selector
+   ===================== */
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background-color: transparent;
+  color: #c9a84c;
+  border: 1.5px solid #c9a84c;
+  border-radius: 2px;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #c9a84c;
+  color: #0c1810;
+  transform: translateY(-2px);
+}
+
+/* =====================
+   CONTAINER
+   centering with margin auto (Le Wagon div lesson)
+   ===================== */
+.container {
+  width: 800px;
+  margin: 0px auto;
+  padding-bottom: 80px;
+}
+
+/* =====================
+   CARDS
+   background, padding, border-radius,
+   box-shadow (Le Wagon div lesson)
+   ===================== */
+.card-white {
+  background-color: #faf8f4;
+  border-radius: 0px;
+  padding: 52px 60px;
+  margin-bottom: 2px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  transition: border-left-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.card-white:nth-child(1) { animation-delay: 0.1s; }
+.card-white:nth-child(2) { animation-delay: 0.2s; }
+.card-white:nth-child(3) { animation-delay: 0.3s; }
+.card-white:nth-child(4) { animation-delay: 0.4s; }
+
+.card-white:hover {
+  border-left-color: #c9a84c;
+  transform: translateX(4px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+}
+
+/* Large background number — decorative */
+.card-number {
+  position: absolute;
+  top: -10px;
+  right: 40px;
+  font-family: 'Fraunces', serif;
+  font-size: 120px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =====================
+   SECTION LAYOUT
+   ===================== */
+.card-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.section-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #0c1810;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background-color 0.3s ease;
+}
+
+/* Descendant selector: icon inside card-white on hover */
+.card-white:hover .section-icon {
+  background-color: #c9a84c;
+}
+
+.section-icon i {
+  color: #faf8f4;
+  font-size: 18px;
+}
+
+.section-content {
+  flex: 1;
+}
+
+/* Descendant: p inside section-content */
+.section-content p {
+  margin-top: 8px;
+}
+
+/* =====================
+   SECTION IDs — descendant selectors
+   ===================== */
+#travel h2 { color: #0c1810; }
+#hiking h2 { color: #0c1810; }
+#music  h2 { color: #0c1810; }
+
+/* =====================
+   FOOTER — id + descendant selectors
+   ===================== */
+#footer {
+  text-align: center;
+  padding: 44px 60px;
+  background-color: #0c1810;
+}
+
+/* Descendant: h3 inside #footer */
+#footer h3 {
+  color: rgba(240, 235, 224, 0.4);
+  margin-bottom: 24px;
+}
+
+/* Descendant: a inside #footer */
+#footer a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(240, 235, 224, 0.5);
+  transition: color 0.3s ease;
+}
+
+#footer a:hover {
+  color: #c9a84c;
+}
+
+/* =====================
+   LIST INLINE
+   list-inline reusable class (Le Wagon id/class lesson)
+   ===================== */
+.list-inline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline > li {
+  display: inline;
+  padding: 0 28px;
+}
+
+.list-inline i {
+  margin-right: 8px;
+}
+
+/* =====================
+   ANIMATIONS
+   ===================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0);   }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* =====================
+   RESPONSIVE — media queries (Le Wagon responsive lesson)
+   ===================== */
+@media (max-width: 960px) {
+  .container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 720px) {
+  #hero {
+    padding: 60px 6%;
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .img-wrapper,
+  .img-profile {
+    width: 180px;
+    height: 180px;
+  }
+
+  .img-ring {
+    width: 204px;
+    height: 204px;
+  }
+
+  h1 {
+    font-size: 44px;
+  }
+
+  #hero p.hero-bio {
+    max-width: 100%;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+    padding-bottom: 60px;
+  }
+
+  .card-white {
+    padding: 36px 28px;
+  }
+
+  .card-number {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 540px) {
+  h1 { font-size: 36px; }
+  h2 { font-size: 22px; }
+
+  .card-inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .list-inline > li {
+    padding: 0 14px;
+  }
+}
