@@ -1,0 +1,328 @@
+/* =====================
+   GOOGLE FONTS
+   ===================== */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=Epilogue:wght@300;400;500;600&display=swap");
+
+/* =====================
+   COMPONENT IMPORTS
+   ===================== */
+@import url("components/button.css");
+@import url("components/banner.css");
+@import url("components/card.css");
+@import url("components/navbar.css");
+
+/* =====================
+   CSS VARIABLES
+   ===================== */
+:root {
+  --navy:      #0a1628;
+  --navy-mid:  #112240;
+  --teal:      #00c2a8;
+  --teal-dark: #009e88;
+  --white:     #ffffff;
+  --off-white: #f4f7fb;
+  --text:      #1a1a2e;
+  --muted:     #6b7a99;
+  --shadow:    0 8px 40px rgba(10, 22, 40, 0.12);
+}
+
+/* =====================
+   RESET
+   ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   BODY
+   ===================== */
+body {
+  font-family: 'Epilogue', sans-serif;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 300;
+  background-color: var(--off-white);
+  background-image: radial-gradient(circle at 20% 50%, rgba(0, 194, 168, 0.03) 0%, transparent 60%);
+}
+
+/* =====================
+   GROUPING h1, h2, h3
+   ===================== */
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 1.05;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--teal);
+}
+
+h2 {
+  font-size: 36px;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 20px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+/* =====================
+   LINKS
+   ===================== */
+a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--teal-dark);
+}
+
+p {
+  color: var(--muted);
+  font-weight: 300;
+}
+
+/* =====================
+   CONTAINER
+   ===================== */
+.container {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+/* =====================
+   SECTION LABELS
+   ===================== */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+/* =====================
+   LIST INLINE
+   ===================== */
+.list-inline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline > li {
+  display: inline;
+  padding: 0 16px;
+}
+
+/* =====================
+   FEATURES SECTION
+   ===================== */
+#features {
+  padding: 100px 0;
+  text-align: center;
+}
+
+#features h2 {
+  margin-bottom: 60px;
+}
+
+#features .section-label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* =====================
+   ABOUT SECTION
+   ===================== */
+#about {
+  padding: 100px 0;
+  background-color: var(--navy);
+  background-image: radial-gradient(circle at 80% 50%, rgba(0, 194, 168, 0.07) 0%, transparent 60%);
+}
+
+.about-inner {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+#about .section-label {
+  color: var(--teal);
+}
+
+#about h2 {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+#about p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 32px;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex-shrink: 0;
+}
+
+.stat {
+  text-align: center;
+  border-left: 2px solid var(--teal);
+  padding-left: 24px;
+}
+
+.stat-number {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+#footer {
+  background-color: #060e1c;
+  padding: 48px 0;
+  text-align: center;
+}
+
+#footer .nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 20px;
+  display: block;
+}
+
+#footer .nav-logo span {
+  color: var(--teal);
+}
+
+#footer .list-inline {
+  margin-bottom: 20px;
+}
+
+#footer .list-inline a {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+#footer .list-inline a:hover {
+  color: var(--teal);
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.5px;
+}
+
+/* =====================
+   CONTACT / TYPEFORM SECTION
+   ===================== */
+#contact {
+  padding: 100px 0;
+  background-color: var(--white);
+  text-align: center;
+}
+
+#contact .section-label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+#contact h2 {
+  margin-bottom: 12px;
+}
+
+.contact-sub {
+  margin-bottom: 48px;
+  font-size: 16px;
+}
+
+.typeform-wrapper {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(10, 22, 40, 0.1);
+}
+
+.typeform-wrapper > div {
+  width: 100%;
+  height: 100%;
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 1140px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  h1 { font-size: 38px; }
+  h2 { font-size: 28px; }
+
+  .about-inner {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .about-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  h1 { font-size: 30px; }
+}

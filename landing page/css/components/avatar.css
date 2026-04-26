@@ -1,0 +1,24 @@
+/* =====================
+   AVATAR COMPONENT
+   ===================== */
+.img-circle {
+  border-radius: 50%;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #00c2a8;
+}
+
+.avatar-lg {
+  width: 80px;
+  height: 80px;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+}

@@ -1,0 +1,85 @@
+/* =====================
+   BANNER COMPONENT
+   ===================== */
+.banner {
+  background-image:
+    linear-gradient(135deg, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.7) 100%),
+    url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 200px 0 140px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Teal glow accent */
+.banner::before {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 194, 168, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Bottom fade line */
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 194, 168, 0.4), transparent);
+}
+
+.banner .section-label {
+  color: #00c2a8;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.banner h1 {
+  color: #ffffff;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: 0.25s;
+}
+
+.banner .banner-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 480px;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.banner .btn-primary,
+.banner .btn-ghost {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: 0.55s;
+}
+
+.banner .btn-ghost {
+  animation-delay: 0.65s;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
